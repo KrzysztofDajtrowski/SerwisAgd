@@ -18,7 +18,16 @@ namespace SerwisAGD.Controllers
         [HttpGet]
         public ActionResult AddOrEdit(int id=0)
         {
-            return View();
+            if (id == 0)
+            {
+                return View();
+            }
+            else
+            {
+                DynamicParameters param = new DynamicParameters();
+                param.Add("@ID", id);
+                return View(DapperORM.ReturnList<test_tableModels>("ViewById", param).FirstOrDefault<test_tableModels>());
+            }
         }
         [HttpPost]
         public ActionResult AddOrEdit(test_tableModels tes)
@@ -29,6 +38,14 @@ namespace SerwisAGD.Controllers
             param.Add("@Surname", tes.Surname);
             DapperORM.ExecuteWithoutReturn("AddOrEdit", param);
             return RedirectToAction("index");
+        }
+        public ActionResult testDeleteById(int id)
+        {
+            DynamicParameters param = new DynamicParameters();
+            param.Add("@ID", id);
+            DapperORM.ExecuteWithoutReturn("testDeleteById", param);
+            return RedirectToAction("index");
+
         }
     }
 }

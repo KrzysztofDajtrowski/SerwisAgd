@@ -29,11 +29,9 @@
             @Html.DisplayFor(modelItem => item.Surname)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+            @Html.ActionLink("Edit", "AddOrEdit", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "testDeleteById", new { id = item.ID })
+</tr>
 }
 
 </table>
