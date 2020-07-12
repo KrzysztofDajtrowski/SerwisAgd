@@ -107,6 +107,18 @@ namespace SerwisAGD.Controllers
             objmajorkupricz_SerwisAGDEntities.SaveChanges();
             return RedirectToAction("ConfirmAccount", "Account");
         }
+        public ActionResult VerifyAccount(int id)
+        {
+            var customer = objmajorkupricz_SerwisAGDEntities.User.First(c => c.UserID == id);
+
+            customer.Verified = "yes";
+          
+
+           
+            objmajorkupricz_SerwisAGDEntities.SaveChanges();
+            return RedirectToAction("ConfirmAccount", "Account");
+
+        }
        // public ActionResult ConfirmAccount(UserModel objUserModel)
         //{
         //    return View(DbSet.UserModel.)

@@ -36,5 +36,9 @@ namespace SerwisAGD.Controllers
                 return View();
             }
         }
+        public ActionResult ChangeOrderState(int id)
+        {
+            return View();
+        }
     }
 }
