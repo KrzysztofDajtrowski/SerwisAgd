@@ -28,7 +28,8 @@ namespace SerwisAGD.Controllers
         public ActionResult Register(UserModel objUserModel)
         {
             if(ModelState.IsValid)
-            { 
+            {
+            const string val = "no";
             User objUser = new User();
             objUser.Name = objUserModel.Name;
             objUser.Surname = objUserModel.Surname;
@@ -38,7 +39,8 @@ namespace SerwisAGD.Controllers
             objUser.ZipCode = objUserModel.ZipCode;
             objUser.Adress= objUserModel.Adress;
             objUser.Password = objUserModel.Password;
-            //objUser.UserRole = String("0");
+            objUser.Verified = val;
+            objUser.Admin = val;
             objmajorkupricz_SerwisAGDEntities.User.Add(objUser);
             objmajorkupricz_SerwisAGDEntities.SaveChanges();
             return RedirectToAction("Login", "Account");
@@ -60,20 +62,30 @@ namespace SerwisAGD.Controllers
         {
             if (ModelState.IsValid)
             {
-                if(objmajorkupricz_SerwisAGDEntities.User.Where(m=>m.Email == objLoginModel.Email && m.Password == objLoginModel.Password).FirstOrDefault() == null)
+                if(objmajorkupricz_SerwisAGDEntities.User.Where(m=>m.Email == objLoginModel.Email && m.Password == objLoginModel.Password ).FirstOrDefault() == null)
                 {
                     ModelState.AddModelError("Error", "Błędny Email lub hasło");
                     return View();
                 }
                 else
                 {
+                   var customer = objmajorkupricz_SerwisAGDEntities.User.FirstOrDefault(c => c.Email == objLoginModel.Email);
+
+
+                    Session["Verified"] = customer.Verified;
                     Session["Email"] = objLoginModel.Email;
-                    Session["UserRole"] = objLoginModel.UserRole;
-                    RedirectToAction("Index","Home");
+                    Session["Admin"] = customer.Admin;
+                   
+                    return RedirectToAction("Index","Home");
                 }
                 
             }
             return View();
+        }
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Login","Account");
         }
         /*
         [HttpPost]

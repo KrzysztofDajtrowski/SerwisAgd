@@ -2,18 +2,32 @@
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Register", "Register", "Account", null, null)
+            @Html.ActionLink("Rejestruj", "Register", "Account", null, null)
         </li>
         <li>
-            @Html.ActionLink("Login", "Login", "Account", null, null)
+            @Html.ActionLink("Zaloguj", "Login", "Account", null, null)
         </li>
     </ul>
 }
-else if (Session["UserRole"] == null)
+else if (Convert.ToBoolean(Session["Admin"]) == true)
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hi " + Session["Email"], "Index", "Home", null, null)
+            @Html.ActionLink("Widaj Admin " + Session["Email"] + Convert.ToBoolean(Session["Admin"]) + Session["Verified"], "Index", "Home", null, null)
+        </li>
+        <li>
+            @Html.ActionLink("Wyloguj", "Logout", "Account", null, null)
+        </li>
+    </ul>
+}
+else if (Convert.ToBoolean(Session["Verified"]) == false && Convert.ToBoolean(Session["Admin"]) == false)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Musisz być zweryfikowany " + Session["Email"] + Session["Admin"] + Session["Verified"], "Index", "Home", null, null)
+        </li>
+        <li>
+            @Html.ActionLink("Wyloguj", "Logout", "Account", null, null)
         </li>
     </ul>
 }
@@ -21,7 +35,10 @@ else
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hi " + Session["Email"], "Index", "Home", null, null)
+            @Html.ActionLink("Hi " + Session["Email"] + Session["Admin"] + Session["Verified"], "Index", "Home", null, null)
+        </li>
+        <li>
+            @Html.ActionLink("Wyloguj", "Logout", "Account", null, null)
         </li>
     </ul>
 }

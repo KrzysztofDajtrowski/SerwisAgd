@@ -29,7 +29,8 @@ namespace SerwisAGD.Models
         public string ZipCode { get; set; }
         public string Adress { get; set; }
         public string Password { get; set; }
-        public Nullable<int> UserRole { get; set; }
+        public string Verified { get; set; }
+        public string Admin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }
