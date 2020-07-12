@@ -42,7 +42,7 @@ namespace SerwisAGD.Models
         [Display(Name = "Powtórz hasło: ")]
         [Compare("Password", ErrorMessage ="Hasła nie są takie same")]
         public string ConfirmPassword { get; set; }
-        public int UserRole { get; set; }
+        public string UserRole { get; set; }
         
 }
 }

@@ -38,6 +38,7 @@ namespace SerwisAGD.Controllers
             objUser.ZipCode = objUserModel.ZipCode;
             objUser.Adress= objUserModel.Adress;
             objUser.Password = objUserModel.Password;
+            //objUser.UserRole = String("0");
             objmajorkupricz_SerwisAGDEntities.User.Add(objUser);
             objmajorkupricz_SerwisAGDEntities.SaveChanges();
             return RedirectToAction("Login", "Account");
@@ -51,6 +52,27 @@ namespace SerwisAGD.Controllers
         //Login
         public ActionResult Login()
         {
+            LoginModel objLoginModel = new LoginModel();
+            return View(objLoginModel);
+        }
+        [HttpPost]
+        public ActionResult Login(LoginModel objLoginModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if(objmajorkupricz_SerwisAGDEntities.User.Where(m=>m.Email == objLoginModel.Email && m.Password == objLoginModel.Password).FirstOrDefault() == null)
+                {
+                    ModelState.AddModelError("Error", "Błędny Email lub hasło");
+                    return View();
+                }
+                else
+                {
+                    Session["Email"] = objLoginModel.Email;
+                    Session["UserRole"] = objLoginModel.UserRole;
+                    RedirectToAction("Index","Home");
+                }
+                
+            }
             return View();
         }
         /*
