@@ -21,5 +21,9 @@ namespace SerwisAGD.Controllers
         {
             return View();
         }
+        public ActionResult Pending()
+        {
+            return View();
+        }
     }
 }

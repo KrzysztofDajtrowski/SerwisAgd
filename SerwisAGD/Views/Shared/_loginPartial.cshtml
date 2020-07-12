@@ -9,36 +9,46 @@
         </li>
     </ul>
 }
-else if (Convert.ToBoolean(Session["Admin"]) == true)
+else if (Session["Admin"].ToString() == "yes")
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Widaj Admin " + Session["Email"] + Convert.ToBoolean(Session["Admin"]) + Session["Verified"], "Index", "Home", null, null)
+            @Html.ActionLink("Weryfikuj konta", "ConfirmAccount", "Account", null, null)
+        </li>
+        <li>
+            @Html.ActionLink("Witaj Admin " + Session["Email"] + Session["Admin"] + Session["Verified"], "Index", "Home", null, null)
         </li>
         <li>
             @Html.ActionLink("Wyloguj", "Logout", "Account", null, null)
         </li>
     </ul>
 }
-else if (Convert.ToBoolean(Session["Verified"]) == false && Convert.ToBoolean(Session["Admin"]) == false)
-{
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Musisz być zweryfikowany " + Session["Email"] + Session["Admin"] + Session["Verified"], "Index", "Home", null, null)
-        </li>
-        <li>
-            @Html.ActionLink("Wyloguj", "Logout", "Account", null, null)
-        </li>
-    </ul>
-}
+
 else
 {
+    if (Session["Verified"].ToString() == "yes")
+    {
     <ul class="nav navbar-nav navbar-right">
         <li>
-            @Html.ActionLink("Hi " + Session["Email"] + Session["Admin"] + Session["Verified"], "Index", "Home", null, null)
+            @Html.ActionLink("Złóż zamównienie", "Order", "Order", null, null)
+        </li>
+        <li>
+            @Html.ActionLink("Witaj " + Session["Email"] + Session["Admin"] + Session["Verified"], "Index", "Home", null, null)
         </li>
         <li>
             @Html.ActionLink("Wyloguj", "Logout", "Account", null, null)
         </li>
     </ul>
+    }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                         <li>
+                                 @Html.ActionLink("Witaj " + Session["Email"] + ", czekaj na weryfikację konta.", "Pending", "Home", null, null)
+                         </li>
+                <li>
+                         @Html.ActionLink("Wyloguj", "Logout", "Account", null, null)
+                        </li>
+                 </ul>
+        }
 }

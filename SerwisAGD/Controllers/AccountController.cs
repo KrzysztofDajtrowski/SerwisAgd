@@ -75,7 +75,11 @@ namespace SerwisAGD.Controllers
                     Session["Verified"] = customer.Verified;
                     Session["Email"] = objLoginModel.Email;
                     Session["Admin"] = customer.Admin;
-                   
+                    Session["UserID"] = customer.UserID;
+                   if(customer.Verified == "no" && customer.Admin == "no")
+                    {
+                        return RedirectToAction("Pending", "Home");
+                    }
                     return RedirectToAction("Index","Home");
                 }
                 
@@ -87,6 +91,26 @@ namespace SerwisAGD.Controllers
             Session.Abandon();
             return RedirectToAction("Login","Account");
         }
+        public ActionResult ConfirmAccount()
+        {
+           
+           
+            return View(objmajorkupricz_SerwisAGDEntities.User.ToList().Where(c=> c.Verified=="no"));
+        }
+        public ActionResult DeleteAccount(int id)
+        {
+            
+           var customer = objmajorkupricz_SerwisAGDEntities.User.FirstOrDefault(c => c.UserID == id);
+            
+            
+           objmajorkupricz_SerwisAGDEntities.User.Remove(customer);
+            objmajorkupricz_SerwisAGDEntities.SaveChanges();
+            return RedirectToAction("ConfirmAccount", "Account");
+        }
+       // public ActionResult ConfirmAccount(UserModel objUserModel)
+        //{
+        //    return View(DbSet.UserModel.)
+       // }
         /*
         [HttpPost]
         public ActionResult Login(UserModel user)

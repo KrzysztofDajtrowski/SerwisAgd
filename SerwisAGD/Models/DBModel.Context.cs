@@ -27,5 +27,9 @@ namespace SerwisAGD.Models
     
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<User> User { get; set; }
+
+        public System.Data.Entity.DbSet<SerwisAGD.Models.OrderModel> OrderModels { get; set; }
+
+        public System.Data.Entity.DbSet<SerwisAGD.Models.UserModel> UserModels { get; set; }
     }
 }
