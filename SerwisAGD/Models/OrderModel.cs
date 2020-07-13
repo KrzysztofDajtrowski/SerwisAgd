@@ -13,11 +13,13 @@ namespace SerwisAGD.Models
         
         public int UserID { get; set; }
         [Required]
+        [Display(Name="Opis usługi: ")]
         public string OrderDescryption { get; set; }
         [Required]
+        [Display(Name="Tutuł usługi: ")]
         public string OrderName { get; set; }
+        [Display(Name="Stan: ")]
         public string OrderState { get; set; }
-        public string NewOrderState { get; set; }
         public DateTime OrderDate { get; set; }
     }
 }
