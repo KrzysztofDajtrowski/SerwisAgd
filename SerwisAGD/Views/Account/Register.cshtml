@@ -64,6 +64,11 @@
         </tr>
         <tr>
             <td>
+                @Html.ValidationMessage("Error", null, new { @class="text text-danger"})
+            </td>
+        </tr>
+        <tr>
+            <td>
                 @Html.LabelFor(model => model.City)
             </td>
             <td>
@@ -137,9 +142,7 @@
                         <td>
                             <input type="submit" value="Rejestruj" />
                         </td>
-                        <td>
-                            <input type="submit" value="Reset" />
-                        </td>
+                       
                     </tr>
                 </table>
             </td>

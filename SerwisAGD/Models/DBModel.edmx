@@ -13,7 +13,7 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="OrderDescryption" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="OrderName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="OrderState" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderState" Type="varchar" MaxLength="50" />
           <Property Name="OrderDate" Type="datetime" />
         </EntityType>
         <EntityType Name="User">
@@ -72,7 +72,7 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="OrderDescryption" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="OrderName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="OrderState" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OrderState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="OrderDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="User" Relationship="majorkupricz_SerwisAGDModel.UserID_fk" FromRole="Order" ToRole="User" />
         </EntityType>

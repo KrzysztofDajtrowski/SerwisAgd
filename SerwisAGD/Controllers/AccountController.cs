@@ -29,7 +29,9 @@ namespace SerwisAGD.Controllers
         {
             if(ModelState.IsValid)
             {
-            const string val = "no";
+                if(objmajorkupricz_SerwisAGDEntities.User.Where(m => m.Email == objUserModel.Email ).FirstOrDefault() == null)
+                { 
+                        const string val = "no";
             User objUser = new User();
             objUser.Name = objUserModel.Name;
             objUser.Surname = objUserModel.Surname;
@@ -44,6 +46,12 @@ namespace SerwisAGD.Controllers
             objmajorkupricz_SerwisAGDEntities.User.Add(objUser);
             objmajorkupricz_SerwisAGDEntities.SaveChanges();
             return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    ModelState.AddModelError("Error", "Email zajety");
+                    return View();
+                }
             }
             else
             {

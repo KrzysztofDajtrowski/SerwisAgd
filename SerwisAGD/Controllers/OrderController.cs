@@ -36,9 +36,28 @@ namespace SerwisAGD.Controllers
                 return View();
             }
         }
-        public ActionResult ChangeOrderState(int id)
+        public ActionResult ViewOrderState()
         {
-            return View();
+            return View(objmajorkupricz_SerwisAGDEntities.Order.ToList());
+        }
+        
+        public ActionResult ChangeOrderState(string state)
+        {
+            var ord = objmajorkupricz_SerwisAGDEntities.Order.FirstOrDefault(c => c.OrderState == state);
+            
+            ord.OrderState = state;
+            objmajorkupricz_SerwisAGDEntities.SaveChanges();
+            return RedirectToAction("ViewOrderState", "Order");
+        }
+        public ActionResult DeleteOrder(int id)
+        {
+
+            var order = objmajorkupricz_SerwisAGDEntities.Order.FirstOrDefault(c => c.OrderID == id);
+
+
+            objmajorkupricz_SerwisAGDEntities.Order.Remove(order);
+            objmajorkupricz_SerwisAGDEntities.SaveChanges();
+            return RedirectToAction("ViewOrderState", "Order");
         }
     }
 }

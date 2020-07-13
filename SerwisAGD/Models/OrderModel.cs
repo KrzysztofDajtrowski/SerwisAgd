@@ -17,6 +17,7 @@ namespace SerwisAGD.Models
         [Required]
         public string OrderName { get; set; }
         public string OrderState { get; set; }
+        public string NewOrderState { get; set; }
         public DateTime OrderDate { get; set; }
     }
 }
