@@ -37,7 +37,7 @@
             @Html.DisplayFor(modelItem => item.OrderDescryption)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.OrderState)
+            @Html.TextBoxFor(model => item.OrderState)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OrderDate)
@@ -45,7 +45,7 @@
 
         <td>
             
-            @Html.TextBoxFor(model => item.OrderState)
+           
 
             @Html.ActionLink("Zmień status zamównienia", "ChangeOrderState", "Order", new { state = item.OrderState }, null)
             @Html.ActionLink("Usuń zamówienie", "DeleteOrder", "Order", new { id = item.OrderID }, null)
