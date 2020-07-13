@@ -21,9 +21,8 @@ namespace SerwisAGD.Models
         [Display(Name = "Numer telefonu: ")]
         public string PhoneNumber { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Email jest wymagany")]
-        [DataType(DataType.EmailAddress)]
+        [DataType(DataType.EmailAddress, ErrorMessage ="Musi być Email")]
         [Display(Name = "Adres Email: ")]
-
         public string Email { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Miasto jest wymagane")]
         [Display(Name = "Miasto zamieszkania: ")]

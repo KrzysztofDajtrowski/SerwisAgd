@@ -54,7 +54,7 @@
                 @Html.LabelFor(model => model.Email)
             </td>
             <td>
-                @Html.TextBoxFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email, new { @type = "email" })
             </td>
         </tr>
         <tr colspan="2">
