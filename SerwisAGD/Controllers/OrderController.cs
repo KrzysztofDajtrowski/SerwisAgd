@@ -57,7 +57,12 @@ namespace SerwisAGD.Controllers
 
             objmajorkupricz_SerwisAGDEntities.Order.Remove(order);
             objmajorkupricz_SerwisAGDEntities.SaveChanges();
-            return RedirectToAction("ViewOrderState", "Order");
+            return RedirectToAction("index", "Home");
+        }
+        
+        public ActionResult MyOrder()
+        {
+            return View(objmajorkupricz_SerwisAGDEntities.Order.ToList().Where(c => c.UserID == Convert.ToInt32(Session["UserID"])));
         }
     }
 }

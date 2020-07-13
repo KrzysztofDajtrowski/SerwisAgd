@@ -264,6 +264,7 @@
     <Content Include="Views\Order\Order.cshtml" />
     <Content Include="Views\Account\ConfirmAccount.cshtml" />
     <Content Include="Views\Order\ViewOrderState.cshtml" />
+    <Content Include="Views\Order\MyOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
       <SubType>Designer</SubType>

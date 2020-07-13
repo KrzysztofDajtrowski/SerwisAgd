@@ -13,10 +13,13 @@ else if (Session["Admin"].ToString() == "yes")
 {
     <ul class="nav navbar-nav navbar-right">
         <li>
+            @Html.ActionLink("Zarządzaj zleceniami", "ViewOrderState", "Order", null, null)
+        </li>
+        <li>
             @Html.ActionLink("Weryfikuj konta", "ConfirmAccount", "Account", null, null)
         </li>
         <li>
-            @Html.ActionLink("Witaj Admin " + Session["Email"] + Session["Admin"] + Session["Verified"], "Index", "Home", null, null)
+            @Html.ActionLink("Witaj Admin " + Session["Email"], "Index", "Home", null, null)
         </li>
         <li>
             @Html.ActionLink("Wyloguj", "Logout", "Account", null, null)
@@ -30,10 +33,13 @@ else
     {
     <ul class="nav navbar-nav navbar-right">
         <li>
+            @Html.ActionLink("Moje zamówienia", "MyOrder", "Order", null, null)
+        </li>
+        <li>
             @Html.ActionLink("Złóż zamównienie", "Order", "Order", null, null)
         </li>
         <li>
-            @Html.ActionLink("Witaj " + Session["Email"] + Session["Admin"] + Session["Verified"], "Index", "Home", null, null)
+            @Html.ActionLink("Witaj " + Session["Email"], "Index", "Home", null, null)
         </li>
         <li>
             @Html.ActionLink("Wyloguj", "Logout", "Account", null, null)
